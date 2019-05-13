@@ -515,11 +515,6 @@ func parseAction(cmd *cobra.Command, args []string, update bool) (*whisk.Action,
                 } else {
                         return nil, noArtifactError ()
                 }
-        } else if len(args) > 1 || len(Flags.action.docker) > 0 {
-		action.Exec, err = getExec(args, Flags.action)
-		if err != nil {
-			return nil, err
-		}
 	} else if len(args) > 1 || len(Flags.action.docker) > 0 {
 		action.Exec, err = getExec(args, Flags.action)
 		if err != nil {
