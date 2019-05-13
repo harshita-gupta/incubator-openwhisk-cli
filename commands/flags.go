@@ -138,6 +138,10 @@ type ActionFlags struct {
 	web         string
 	websecure   string
 	sequence    bool
+        projection bool
+        program    bool
+        fork       bool
+        app        bool
 	timeout     int
 	memory      int
 	logsize     int
