@@ -142,6 +142,7 @@ type ActionFlags struct {
         program    bool
         fork       bool
         app        bool
+        dagular    bool // XXXdagular
 	timeout     int
 	memory      int
 	logsize     int
