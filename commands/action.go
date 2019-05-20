@@ -522,13 +522,14 @@ func parseAction(cmd *cobra.Command, args []string, update bool) (*whisk.Action,
   // XXXdagular
   } else if Flags.action.dagular {
     if len(args) == 2 {
+      var code string
       action.Exec = new(whisk.Exec)
       action.Exec.Kind = DAGULAR
-      action.Exec.Code = "{}" // XXX this is totally gonna wig out serverside -- what is the whisk API?
-      if (len (action.Exec.Components) > 1) {
-        fmt.Println ("Dagular wants a single program file")
-          return nil, noArtifactError ()
+      code, err = ReadFile (args[1])
+      if err != nil {
+        return nil, noArtifactError ()
       }
+      action.Exec.Code = &code
     } else {
       return nil, noArtifactError ()
     }
